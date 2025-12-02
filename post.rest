@@ -1,0 +1,8 @@
+POST https://localhost:44491/api/todos HTTP/1.1
+content-type: application/json
+
+{
+  "title": "create test",
+  "deadline": "2025-12-10T00:00:00",
+  "isCompleted": false
+}
