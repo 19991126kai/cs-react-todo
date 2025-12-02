@@ -1,4 +1,11 @@
+using cs_react_todo.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
+// 開発環境: SQLiteを使用
+builder.Services.AddDbContext<TodoContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("TodoDatabase")));
 
 builder.Services.AddControllers();
 
@@ -14,9 +21,5 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
-
 app.MapControllers();
-
-app.MapFallbackToFile("index.html");
-
 app.Run();
