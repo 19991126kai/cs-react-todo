@@ -23,4 +23,18 @@ public class TodosController : ControllerBase
         var todos = await _context.Todos.ToListAsync();
         return Ok(todos);
     }
+
+    // GET: api/todos/{id}
+    [HttpGet("{id}")]
+    public async Task<ActionResult<Todo>> GetTodo(int id)
+    {
+        var todo = await _context.Todos.FindAsync(id);
+
+        if (todo == null)
+        {
+            return NotFound();
+        }
+
+        return todo;
+    }
 }
