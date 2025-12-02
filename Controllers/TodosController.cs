@@ -37,4 +37,17 @@ public class TodosController : ControllerBase
 
         return todo;
     }
+
+    // POST: api/todos
+    [HttpPost]
+    public async Task<ActionResult<Todo>> PostTodo(Todo todo)
+    {
+        todo.CreatedAt = DateTime.UtcNow;
+        todo.UpdatedAt = DateTime.UtcNow;
+
+        _context.Todos.Add(todo);
+        await _context.SaveChangesAsync();
+
+        return CreatedAtAction(nameof(GetTodo), new { id = todo.Id }, todo);
+    }
 }
