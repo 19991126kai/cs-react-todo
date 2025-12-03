@@ -42,11 +42,8 @@ public class TodosController : ControllerBase
     [HttpPost]
     public async Task<ActionResult<Todo>> PostTodo(Todo todo)
     {
-        var jst = TimeZoneInfo.FindSystemTimeZoneById("Tokyo Standard Time");
-        var jstNow = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, jst);
-
-        todo.CreatedAt = jstNow;
-        todo.UpdatedAt = jstNow;
+        todo.CreatedAt = GetJstNow();
+        todo.UpdatedAt = GetJstNow();
 
         _context.Todos.Add(todo);
         await _context.SaveChangesAsync();
@@ -70,17 +67,21 @@ public class TodosController : ControllerBase
         }
 
         // 更新項目のみ反映（CreatedAt は変更しない）
-        var jst = TimeZoneInfo.FindSystemTimeZoneById("Tokyo Standard Time");
-        var jstNow = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, jst);
-
         existingTodo.Title = updatedTodo.Title;
         existingTodo.Deadline = updatedTodo.Deadline;
         existingTodo.IsCompleted = updatedTodo.IsCompleted;
-        existingTodo.UpdatedAt = jstNow;
+        existingTodo.UpdatedAt = GetJstNow();
 
         await _context.SaveChangesAsync();
 
         return NoContent(); // 204 No Content
     }
 
+    // 現在時刻（JST）を取得する関数
+    private DateTime GetJstNow()
+    {
+        var jst = TimeZoneInfo.FindSystemTimeZoneById("Tokyo Standard Time");
+        var jstNow = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, jst);
+        return jstNow;
+    }
 }
