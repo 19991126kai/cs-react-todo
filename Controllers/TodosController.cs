@@ -42,8 +42,11 @@ public class TodosController : ControllerBase
     [HttpPost]
     public async Task<ActionResult<Todo>> PostTodo(Todo todo)
     {
-        todo.CreatedAt = DateTime.UtcNow;
-        todo.UpdatedAt = DateTime.UtcNow;
+        var jst = TimeZoneInfo.FindSystemTimeZoneById("Tokyo Standard Time");
+        var jstNow = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, jst);
+
+        todo.CreatedAt = jstNow;
+        todo.UpdatedAt = jstNow;
 
         _context.Todos.Add(todo);
         await _context.SaveChangesAsync();
