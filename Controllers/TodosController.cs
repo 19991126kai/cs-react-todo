@@ -53,4 +53,34 @@ public class TodosController : ControllerBase
 
         return CreatedAtAction(nameof(GetTodo), new { id = todo.Id }, todo);
     }
+
+    // PUT: api/todos/{id}
+    [HttpPut("{id}")]
+    public async Task<IActionResult> PutTodo(int id, Todo updatedTodo)
+    {
+        if (id != updatedTodo.Id)
+        {
+            return BadRequest(); // 400 Bad Request
+        }
+
+        var existingTodo = await _context.Todos.FindAsync(id);
+        if (existingTodo == null)
+        {
+            return NotFound(); // 404 Not Found
+        }
+
+        // 更新項目のみ反映（CreatedAt は変更しない）
+        var jst = TimeZoneInfo.FindSystemTimeZoneById("Tokyo Standard Time");
+        var jstNow = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, jst);
+
+        existingTodo.Title = updatedTodo.Title;
+        existingTodo.Deadline = updatedTodo.Deadline;
+        existingTodo.IsCompleted = updatedTodo.IsCompleted;
+        existingTodo.UpdatedAt = jstNow;
+
+        await _context.SaveChangesAsync();
+
+        return NoContent(); // 204 No Content
+    }
+
 }
