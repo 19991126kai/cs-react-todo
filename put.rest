@@ -1,0 +1,11 @@
+PUT https://localhost:44491/api/todos/1 HTTP/1.1
+content-type: application/json
+
+{
+  "id": 1,
+  "title": "update test",
+  "deadline": "2026-01-01",
+  "isCompleted": true,
+  "createdAt": "2025-12-31T00:00:00",
+  "updatedAt": "2025-12-02T00:00:00"
+}
