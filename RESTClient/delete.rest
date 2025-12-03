@@ -1,0 +1,2 @@
+DELETE https://localhost:44491/api/todos/1 HTTP/1.1
+content-type: application/json
