@@ -8,7 +8,7 @@ export const TodoDetail = ({ todo }: Props) => {
   return (
     <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-md">
       <div className="space-y-2 text-sm text-gray-700">
-        <h2 className="font-bold text-lg">{todo.title}</h2>
+        <p className="font-bold text-lg">{todo.title}</p>
         <p>
           <span className="font-semibold">状況:</span>{" "}
           <span
