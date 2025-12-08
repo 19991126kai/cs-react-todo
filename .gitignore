@@ -238,3 +238,9 @@ _Pvt_Extensions
 *.db-wal
 *.db-shm
 *.db-journal
+
+# VSCode settings
+.vscode/
+
+# Local app settings file
+appsettings.Development.json
