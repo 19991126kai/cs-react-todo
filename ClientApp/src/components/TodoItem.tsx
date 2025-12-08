@@ -1,4 +1,5 @@
 import { Todo } from "../types/todo";
+import { Link } from "react-router-dom";
 
 type Props = {
   todo: Todo;
@@ -21,6 +22,11 @@ export const TodoItem = ({ todo }: Props) => {
         >
           {todo.isCompleted ? "完了" : "未完了"}
         </span>
+      </td>
+      <td className="px-4 py-3 text-center">
+        <button className="w-16 rounded-full py-0.5 text-xs font-semibold bg-gray-100 hover:bg-gray-200">
+          <Link to={`/todos/${todo.id}`}>詳細</Link>
+        </button>
       </td>
     </tr>
   );

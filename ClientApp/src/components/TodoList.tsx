@@ -11,9 +11,10 @@ export const TodoList = ({ todos }: Props) => {
       <table className="min-w-full text-sm">
         <thead className="bg-slate-50 text-left">
           <tr className="text-center">
-            <th className="px-4 py-3">タイトル</th>
+            <th className="px-4 py-3 w-1/2">タイトル</th>
             <th className="px-4 py-3">予定日</th>
             <th className="px-4 py-3">状況</th>
+            <th className="px-4 py-3">詳細ページ</th>
           </tr>
         </thead>
         <tbody className="bg-white">
