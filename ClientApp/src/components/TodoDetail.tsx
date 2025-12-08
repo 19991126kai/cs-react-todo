@@ -10,7 +10,7 @@ export const TodoDetail = ({ todo }: Props) => {
       <div className="space-y-2 text-sm text-gray-700">
         <p className="font-bold text-lg">{todo.title}</p>
         <p>
-          <span className="font-semibold">状況:</span>{" "}
+          <span className="font-semibold">状況: </span>
           <span
             className={`inline-block rounded-full px-2 py-0.5 text-xs font-medium ${
               todo.isCompleted
@@ -22,15 +22,15 @@ export const TodoDetail = ({ todo }: Props) => {
           </span>
         </p>
         <p>
-          <span className="font-semibold">期限:</span>{" "}
+          <span className="font-semibold">期限: </span>
           {new Date(todo.deadline).toLocaleDateString("ja-JP")}
         </p>
         <p>
-          <span className="font-semibold">作成日:</span>{" "}
+          <span className="font-semibold">作成日: </span>
           {new Date(todo.createdAt).toLocaleString("ja-JP")}
         </p>
         <p>
-          <span className="font-semibold">更新日:</span>{" "}
+          <span className="font-semibold">更新日: </span>
           {new Date(todo.updatedAt).toLocaleString("ja-JP")}
         </p>
       </div>
