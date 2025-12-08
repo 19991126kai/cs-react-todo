@@ -1,14 +1,21 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Header } from "./components/Header";
 import { TodosPage } from "./pages/TodosPage";
+import { TodoDetailPage } from "./pages/TodoDetailPage";
 
 function App() {
   return (
-    <div className="min-h-screen bg-gray-50 text-gray-900">
-      <Header />
-      <main className="mx-auto max-w-5xl px-4 py-6">
-        <TodosPage />
-      </main>
-    </div>
+    <BrowserRouter>
+      <div className="min-h-screen bg-gray-50 text-gray-900">
+        <Header />
+        <main className="mx-auto max-w-5xl px-4 py-6">
+          <Routes>
+            <Route path="/" element={<TodosPage />} />
+            <Route path="/todos/:id" element={<TodoDetailPage />} />
+          </Routes>
+        </main>
+      </div>
+    </BrowserRouter>
   );
 }
 
