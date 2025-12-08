@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Header } from "./components/Header";
 import { TodosPage } from "./pages/TodosPage";
 import { TodoDetailPage } from "./pages/TodoDetailPage";
+import { TodoCreatePage } from "./pages/TodoCreatePage";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
           <Routes>
             <Route path="/" element={<TodosPage />} />
             <Route path="/todos/:id" element={<TodoDetailPage />} />
+            <Route path="/todos/new" element={<TodoCreatePage />} />
           </Routes>
         </main>
       </div>
