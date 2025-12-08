@@ -10,7 +10,13 @@ export const TodosPage = () => {
 
   useEffect(() => {
     fetchTodos()
-      .then(setTodos)
+      .then((data) => {
+        // sort()は破壊的メソッドだが、APIから取得したその場限りのデータを破壊したところで影響はない
+        const sorted = data.sort(
+          (a: { id: number }, b: { id: number }) => b.id - a.id
+        );
+        setTodos(sorted);
+      })
       .catch((err) => setError(err.message));
   }, []);
 
