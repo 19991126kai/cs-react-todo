@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { fetchTodoById } from "../api/get-todo";
 import { Todo } from "../types/todo";
@@ -24,6 +24,9 @@ export const TodoDetailPage = () => {
     <div>
       <h2>TODO詳細</h2>
       <TodoDetail todo={todo} />
+      <button className="rounded bg-blue-600 px-4 py-2 mt-6 text-white hover:bg-blue-700 text-sm">
+        <Link to={`/todos/${todo.id}/edit`}>編集</Link>
+      </button>
     </div>
   );
 };
