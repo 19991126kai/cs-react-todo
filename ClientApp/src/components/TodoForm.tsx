@@ -8,7 +8,9 @@ type Props = {
 
 export const TodoForm = ({ onSubmit, initialValue }: Props) => {
   const [title, setTitle] = useState(initialValue?.title ?? "");
-  const [deadline, setDeadline] = useState(initialValue?.deadline ?? "");
+  const [deadline, setDeadline] = useState(
+    initialValue?.deadline.split("T")[0] ?? ""
+  );
   const [isCompleted, setIsCompleted] = useState(
     initialValue?.isCompleted ?? false
   );
@@ -30,7 +32,7 @@ export const TodoForm = ({ onSubmit, initialValue }: Props) => {
         />
       </div>
       <div>
-        <label className="block text-sm font-bold">予定日</label>
+        <label className="block text-sm font-bold"></label>
         <input
           type="date"
           className="w-full rounded border p-2"
