@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { Todo } from "../types/todo";
 
 type Props = {
@@ -35,9 +34,6 @@ export const TodoDetail = ({ todo }: Props) => {
           {new Date(todo.updatedAt).toLocaleString("ja-JP")}
         </p>
       </div>
-      <button className="rounded bg-blue-600 px-4 py-2 mt-6 text-white hover:bg-blue-700 text-sm">
-        <Link to={`/todos/${todo.id}/edit`}>編集</Link>
-      </button>
     </div>
   );
 };
