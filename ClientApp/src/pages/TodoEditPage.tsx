@@ -32,9 +32,11 @@ export const TodoEditPage = () => {
   if (!todo) return <p>Loading...</p>;
 
   return (
-    <div className="max-w-xl mx-auto bg-white p-6 rounded shadow">
-      <h2 className="text-lg font-bold mb-4">TODO編集</h2>
-      <TodoForm onSubmit={handleSubmit} initialValue={todo} />
+    <div className="max-w-xl mx-auto">
+      <div className="max-w-xl mx-auto bg-white p-6 rounded shadow">
+        <h2 className="text-lg font-bold mb-4">TODO編集</h2>
+        <TodoForm onSubmit={handleSubmit} initialValue={todo} />
+      </div>
     </div>
   );
 };
