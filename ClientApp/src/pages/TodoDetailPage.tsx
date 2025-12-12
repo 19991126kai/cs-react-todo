@@ -37,7 +37,7 @@ export const TodoDetailPage = () => {
 
   return (
     <div className="rounded-xl border bg-white p-6 shadow-md space-y-5">
-      <h2 className="text-lg font-bold mb-4">TODO詳細</h2>
+      <h2 className="text-lg font-bold mb-4 pb-3 border-b">TODO詳細</h2>
       <TodoDetail todo={todo} />
       <div className="flex gap-4 mt-6">
         <button className="rounded bg-blue-600 px-6 py-2 text-white hover:bg-blue-700 text-sm">

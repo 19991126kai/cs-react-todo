@@ -34,7 +34,7 @@ export const TodoEditPage = () => {
   return (
     <div className="max-w-xl mx-auto">
       <div className="max-w-xl mx-auto bg-white p-6 rounded shadow">
-        <h2 className="text-lg font-bold mb-4">TODO編集</h2>
+        <h2 className="text-lg font-bold mb-4 pb-3 border-b">TODO編集</h2>
         <TodoForm onSubmit={handleSubmit} initialValue={todo} />
       </div>
     </div>
