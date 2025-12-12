@@ -3,9 +3,13 @@ import { fetchTodos } from "../api/get-todos";
 import { Todo } from "../types/todo";
 import { TodoList } from "../components/TodoList";
 import { Link } from "react-router-dom";
+import { TodoFilter } from "../components/TodoFilterButton";
 
 export const TodosPage = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
+  const [filter, setFilter] = useState<"all" | "completed" | "incomplete">(
+    "all"
+  );
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -20,6 +24,13 @@ export const TodosPage = () => {
       .catch((err) => setError(err.message));
   }, []);
 
+  // filter()は非破壊的メソッドなので、そのまま使って問題ない
+  const filteredTodos = todos.filter((todo) => {
+    if (filter === "completed") return todo.isCompleted;
+    if (filter === "incomplete") return !todo.isCompleted;
+    return true;
+  });
+
   if (error) return <p>エラー: {error}</p>;
 
   return (
@@ -28,7 +39,8 @@ export const TodosPage = () => {
       <button className="rounded bg-blue-600 px-4 py-2 my-2 text-white hover:bg-blue-700 text-sm">
         <Link to="/todos/new">新規作成</Link>
       </button>
-      <TodoList todos={todos} />
+      <TodoFilter filter={filter} onChange={setFilter} />
+      <TodoList todos={filteredTodos} />
     </div>
   );
 };
