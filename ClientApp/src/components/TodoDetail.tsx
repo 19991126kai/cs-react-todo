@@ -6,33 +6,44 @@ type Props = {
 
 export const TodoDetail = ({ todo }: Props) => {
   return (
-    <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-md">
-      <div className="space-y-2 text-sm text-gray-700">
-        <p className="font-bold text-lg">{todo.title}</p>
-        <p>
-          <span className="font-semibold">状況: </span>
-          <span
-            className={`inline-block rounded-full px-2 py-0.5 text-xs font-medium ${
-              todo.isCompleted
-                ? "bg-green-100 text-green-700"
-                : "bg-red-100 text-red-700"
-            }`}
-          >
-            {todo.isCompleted ? "完了" : "未完了"}
-          </span>
-        </p>
-        <p>
-          <span className="font-semibold">期限: </span>
+    <div className="px-3 mx-auto space-y-4">
+      <div>
+        <label className="font-semibold mb-1">タイトル</label>
+        <div className="m-2">{todo.title}</div>
+      </div>
+
+      <div>
+        <label className="font-semibold mb-1">状況</label>
+        <div
+          className={`m-2 w-16 text-center rounded-full py-0.5 text-xs font-semibold ${
+            todo.isCompleted
+              ? "bg-green-100 text-green-700"
+              : "bg-red-100 text-red-700"
+          }`}
+        >
+          {todo.isCompleted ? "完了" : "未完了"}
+        </div>
+      </div>
+
+      <div>
+        <label className="font-semibold mb-1">予定日</label>
+        <div className="m-2">
           {new Date(todo.deadline).toLocaleDateString("ja-JP")}
-        </p>
-        <p>
-          <span className="font-semibold">作成日: </span>
+        </div>
+      </div>
+
+      <div>
+        <label className="font-semibold mb-1">作成日</label>
+        <div className="m-2">
           {new Date(todo.createdAt).toLocaleString("ja-JP")}
-        </p>
-        <p>
-          <span className="font-semibold">更新日: </span>
+        </div>
+      </div>
+
+      <div>
+        <label className="font-semibold mb-1">更新日</label>
+        <div className="m-2">
           {new Date(todo.updatedAt).toLocaleString("ja-JP")}
-        </p>
+        </div>
       </div>
     </div>
   );
