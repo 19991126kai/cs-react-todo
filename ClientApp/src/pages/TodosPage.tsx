@@ -35,7 +35,7 @@ export const TodosPage = () => {
 
   return (
     <div>
-      <h2>TODO一覧</h2>
+      <h2 className="text-lg font-bold">TODO一覧</h2>
       <button className="rounded bg-blue-600 px-4 py-2 my-2 text-white hover:bg-blue-700 text-sm">
         <Link to="/todos/new">新規作成</Link>
       </button>
