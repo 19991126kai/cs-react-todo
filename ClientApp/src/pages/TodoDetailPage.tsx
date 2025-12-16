@@ -1,9 +1,9 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { fetchTodoById } from "../api/get-todo";
+import { fetchTodoById } from "../api/fetchTodoById";
 import { Todo } from "../types/todo";
 import { TodoDetail } from "../components/TodoDetail";
-import { deleteTodo } from "../api/delete-todo";
+import { deleteTodo } from "../api/deleteTodo";
 
 export const TodoDetailPage = () => {
   const { id } = useParams<{ id: string }>();

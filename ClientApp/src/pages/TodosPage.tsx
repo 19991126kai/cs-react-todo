@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { fetchTodos } from "../api/get-todos";
+import { fetchTodos } from "../api/fetchTodos";
 import { Todo } from "../types/todo";
 import { TodoList } from "../components/TodoList";
 import { Link } from "react-router-dom";
