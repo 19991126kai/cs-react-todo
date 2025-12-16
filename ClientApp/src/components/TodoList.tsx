@@ -7,11 +7,11 @@ type Props = {
 
 export const TodoList = ({ todos }: Props) => {
   return (
-    <div className="rounded-xl border border-gray-200 bg-white shadow-sm">
+    <div className="rounded border bg-white shadow">
       <table className="min-w-full text-sm">
-        <thead className="bg-slate-50 text-left">
+        <thead className="bg-gray-200 text-left">
           <tr className="text-center">
-            <th className="px-4 py-3 w-1/2">タイトル</th>
+            <th className="px-4 py-3 w-2/3">タイトル</th>
             <th className="px-4 py-3">予定日</th>
             <th className="px-4 py-3">状況</th>
             <th className="px-4 py-3">詳細ページ</th>

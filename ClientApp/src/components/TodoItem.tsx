@@ -8,7 +8,9 @@ type Props = {
 export const TodoItem = ({ todo }: Props) => {
   return (
     <tr className="border-b border-gray-200 hover:bg-gray-50">
-      <td className="px-4 py-3 text-left">{todo.title}</td>
+      <td className="px-4 py-3 text-left max-w-[200px] truncate whitespace-nowrap overflow-hidden">
+        {todo.title}
+      </td>
       <td className="px-4 py-3 text-center text-slate-600">
         {new Date(todo.deadline).toLocaleDateString("ja-JP")}
       </td>
@@ -24,9 +26,7 @@ export const TodoItem = ({ todo }: Props) => {
         </span>
       </td>
       <td className="px-4 py-3 text-center">
-        <button className="w-16 rounded-full py-0.5 text-xs font-semibold bg-gray-100 hover:bg-gray-200">
-          <Link to={`/todos/${todo.id}`}>詳細</Link>
-        </button>
+          <Link to={`/todos/${todo.id}`} className="inline-block border w-16 rounded-full py-0.5 text-xs font-semibold bg-gray-100 hover:bg-gray-200">詳細</Link>
       </td>
     </tr>
   );
