@@ -26,9 +26,7 @@ export const TodoItem = ({ todo }: Props) => {
         </span>
       </td>
       <td className="px-4 py-3 text-center">
-        <button className="w-16 rounded-full py-0.5 text-xs font-semibold bg-gray-100 hover:bg-gray-200">
-          <Link to={`/todos/${todo.id}`}>詳細</Link>
-        </button>
+          <Link to={`/todos/${todo.id}`} className="inline-block border w-16 rounded-full py-0.5 text-xs font-semibold bg-gray-100 hover:bg-gray-200">詳細</Link>
       </td>
     </tr>
   );
