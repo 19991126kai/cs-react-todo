@@ -1,7 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { fetchTodoById } from "../api/get-todo";
-import { updateTodo } from "../api/update-todo";
+import { fetchTodoById } from "../api/fetchTodoById";
+import { updateTodo } from "../api/updateTodo";
 import { Todo } from "../types/todo";
 import { TodoForm } from "../components/TodoForm";
 

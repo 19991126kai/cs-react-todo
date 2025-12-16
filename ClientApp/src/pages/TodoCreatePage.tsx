@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { TodoForm } from "../components/TodoForm";
-import { createTodo } from "../api/create-todo";
+import { createTodo } from "../api/createTodo";
 
 export const TodoCreatePage = () => {
   const navigate = useNavigate();
