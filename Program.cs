@@ -3,9 +3,19 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// 開発環境: SQLiteを使用
-builder.Services.AddDbContext<TodoContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("TodoDatabase")));
+// 環境に応じて DB を切り替え
+if (builder.Environment.IsDevelopment())
+{
+    // 開発環境：SQLite
+    builder.Services.AddDbContext<TodoContext>(options =>
+        options.UseSqlite(builder.Configuration.GetConnectionString("TodoDatabase")));
+}
+else
+{
+    // 本番環境：PostgreSQL
+    builder.Services.AddDbContext<TodoContext>(options =>
+        options.UseNpgsql(builder.Configuration.GetConnectionString("TodoDatabase")));
+}
 
 builder.Services.AddControllers();
 
