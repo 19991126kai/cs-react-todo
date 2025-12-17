@@ -33,6 +33,7 @@ jobs:
           cd ClientApp
           npm install
           npm run build
+          cd ..
 
       - name: Copy frontend build into wwwroot
         run: |
