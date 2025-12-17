@@ -37,6 +37,7 @@ jobs:
       - name: Copy frontend build into wwwroot
         run: |
           rm -rf ./wwwroot/*
+          mkdir -p ./wwwroot
           cp -r ./ClientApp/build/* ./wwwroot/
 
       - name: dotnet publish
