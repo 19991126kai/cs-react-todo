@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace cs_react_todo.Models
 {
@@ -13,8 +14,14 @@ namespace cs_react_todo.Models
 
         // bool, date系は[Required]しなくてもnull未許容になる
         public bool IsCompleted { get; set; }
+
+        [Column(TypeName = "timestamp without time zone")]
         public DateTime Deadline { get; set; }
+
+        [Column(TypeName = "timestamp without time zone")]
         public DateTime CreatedAt { get; set; }
+
+        [Column(TypeName = "timestamp without time zone")]
         public DateTime UpdatedAt { get; set; }
     }
 }
