@@ -53,8 +53,33 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: build
+    permissions:
+      contents: read
 
     steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up .NET Core
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.x"
+
+      - name: Install dotnet-ef
+        run: dotnet tool install --global dotnet-ef
+
+      - name: Restore
+        run: dotnet restore
+
+      - name: Apply EF migrations (Production DB)
+        env:
+          CONNECTION_STRING: ${{ secrets.AZURE_POSTGRES_CONNECTION_STRING }}
+        run: |
+          export PATH="$PATH:$HOME/.dotnet/tools"
+          dotnet ef database update \
+            --project ./cs-react-todo.csproj \
+            --startup-project ./cs-react-todo.csproj \
+            --connection "$CONNECTION_STRING"
+
       - name: Download artifact from build job
         uses: actions/download-artifact@v4
         with:
