@@ -11,57 +11,45 @@ namespace cs_react_todo.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterColumn<DateTime>(
-                name: "UpdatedAt",
-                table: "Todos",
-                type: "timestamp without time zone",
-                nullable: false,
-                oldClrType: typeof(DateTime),
-                oldType: "TEXT");
+            migrationBuilder.Sql(@"
+                ALTER TABLE ""Todos""
+                ALTER COLUMN ""UpdatedAt"" TYPE timestamp without time zone
+                USING (""UpdatedAt""::timestamptz)::timestamp;
+            ");
 
-            migrationBuilder.AlterColumn<DateTime>(
-                name: "Deadline",
-                table: "Todos",
-                type: "timestamp without time zone",
-                nullable: false,
-                oldClrType: typeof(DateTime),
-                oldType: "TEXT");
+            migrationBuilder.Sql(@"
+                ALTER TABLE ""Todos""
+                ALTER COLUMN ""Deadline"" TYPE timestamp without time zone
+                USING (""Deadline""::timestamptz)::timestamp;
+            ");
 
-            migrationBuilder.AlterColumn<DateTime>(
-                name: "CreatedAt",
-                table: "Todos",
-                type: "timestamp without time zone",
-                nullable: false,
-                oldClrType: typeof(DateTime),
-                oldType: "TEXT");
+            migrationBuilder.Sql(@"
+                ALTER TABLE ""Todos""
+                ALTER COLUMN ""CreatedAt"" TYPE timestamp without time zone
+                USING (""CreatedAt""::timestamptz)::timestamp;
+            ");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterColumn<DateTime>(
-                name: "UpdatedAt",
-                table: "Todos",
-                type: "TEXT",
-                nullable: false,
-                oldClrType: typeof(DateTime),
-                oldType: "timestamp without time zone");
+            migrationBuilder.Sql(@"
+                ALTER TABLE ""Todos""
+                ALTER COLUMN ""UpdatedAt"" TYPE TEXT
+                USING ""UpdatedAt""::text;
+            ");
 
-            migrationBuilder.AlterColumn<DateTime>(
-                name: "Deadline",
-                table: "Todos",
-                type: "TEXT",
-                nullable: false,
-                oldClrType: typeof(DateTime),
-                oldType: "timestamp without time zone");
+            migrationBuilder.Sql(@"
+                ALTER TABLE ""Todos""
+                ALTER COLUMN ""Deadline"" TYPE TEXT
+                USING ""Deadline""::text;
+            ");
 
-            migrationBuilder.AlterColumn<DateTime>(
-                name: "CreatedAt",
-                table: "Todos",
-                type: "TEXT",
-                nullable: false,
-                oldClrType: typeof(DateTime),
-                oldType: "timestamp without time zone");
+            migrationBuilder.Sql(@"
+                ALTER TABLE ""Todos""
+                ALTER COLUMN ""CreatedAt"" TYPE TEXT
+                USING ""CreatedAt""::text;
+            ");
         }
     }
 }
