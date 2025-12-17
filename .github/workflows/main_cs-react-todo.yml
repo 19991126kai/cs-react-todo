@@ -64,8 +64,8 @@ jobs:
         with:
           dotnet-version: "8.x"
 
-      - name: Install dotnet-ef
-        run: dotnet tool install --global dotnet-ef
+      - name: Install/Update dotnet-ef (EF Core 8)
+        run: dotnet tool update --global dotnet-ef --version 8.*
 
       - name: Restore
         run: dotnet restore
