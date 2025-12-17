@@ -9,7 +9,7 @@ type Props = {
 export const TodoForm = ({ onSubmit, initialValue }: Props) => {
   const [title, setTitle] = useState(initialValue?.title ?? "");
   const [deadline, setDeadline] = useState(
-    initialValue?.deadline ?? ""
+    initialValue?.deadline.split("T")[0] ?? ""
   );
   const [isCompleted, setIsCompleted] = useState(
     initialValue?.isCompleted ?? false
@@ -34,7 +34,7 @@ export const TodoForm = ({ onSubmit, initialValue }: Props) => {
       <div>
         <label className="block text-sm font-bold"></label>
         <input
-          type="datetime-local"
+          type="date"
           className="w-full rounded border p-2"
           value={deadline}
           onChange={(e) => setDeadline(e.target.value)}

@@ -42,18 +42,8 @@ public class TodosController : ControllerBase
     [HttpPost]
     public async Task<ActionResult<Todo>> PostTodo(Todo todo)
     {
-        todo.CreatedAt = DateTime.UtcNow;
-        todo.UpdatedAt = DateTime.UtcNow;
-
-        if (todo.Deadline.Kind == DateTimeKind.Unspecified)
-        {
-            // フロントが "YYYY-MM-DD" だけ送ってくるなら、UTCとして扱う（or Local→UTCなど方針決める）
-            todo.Deadline = DateTime.SpecifyKind(todo.Deadline, DateTimeKind.Utc);
-        }
-        else
-        {
-            todo.Deadline = todo.Deadline.ToUniversalTime();
-        }
+        todo.CreatedAt = GetJstNow();
+        todo.UpdatedAt = GetJstNow();
 
         _context.Todos.Add(todo);
         await _context.SaveChangesAsync();
