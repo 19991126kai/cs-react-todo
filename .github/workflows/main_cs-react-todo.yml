@@ -3,6 +3,7 @@
 
 name: Build and deploy ASP.Net Core app to Azure Web App - cs-react-todo
 
+# mainブランチへのpushをトリガーに実行
 on:
   push:
     branches:
