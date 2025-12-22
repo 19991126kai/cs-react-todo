@@ -1,7 +1,7 @@
 ## 概要
-本リポジトリはC#・Reactの技術課題として作成した簡易TODOアプリである。
+本リポジトリはC#・Reactの技術課題として作成した簡易TODOアプリである。   
 
-## アプリURL
+【アプリURL】   
 https://cs-react-todo-dramc7gzhjcmh3dq.japanwest-01.azurewebsites.net/
 
 ## 技術スタック
@@ -22,8 +22,26 @@ https://cs-react-todo-dramc7gzhjcmh3dq.japanwest-01.azurewebsites.net/
 ![VSCode](https://img.shields.io/badge/VSCode-007ACC?logo=visualstudiocode&logoColor=white)
 ![GitHub](https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=white)
 ![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-2088FF?logo=githubactions&logoColor=white)
+![Figma](https://img.shields.io/badge/Figma-F24E1E?logo=figma&logoColor=white)
+![draw.io](https://img.shields.io/badge/draw.io-F08705?logo=diagramsdotnet&logoColor=white)
 
 ## インフラ構成図
-<img width="1169" height="827" alt="TODOアプリ_システム構成図 drawio (3)" src="https://github.com/user-attachments/assets/cd11da6c-92ea-4ce8-b111-616a3b44bc74" />
+<img width="1169" height="827" alt="TODOアプリ_システム構成図" src="https://github.com/user-attachments/assets/50b6481d-26e6-498e-9b9b-08bdc2c94b48" />
 
-## 所感
+## 画面遷移図
+<img width="8624" height="4900" alt="TODOアプリ_画面遷移図" src="https://github.com/user-attachments/assets/62119645-d2af-48e1-8bfe-f51c8802322f" />
+
+## DB設計図
+```mermaid
+erDiagram
+  todos
+
+  todos {
+    int id PK
+    string title
+    boolean isCompleted
+    datetime deadline
+    datetime createdAt
+    datetime updatedAt
+  }
+```
